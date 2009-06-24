@@ -24,13 +24,14 @@ while True:
   while True:
     t = linha[2]
     result = re.match( r'\d{3}\.\d{3}', t)
-    if result:
+    result2 = re.match( r'\w', linha[0] )
+    if result or result2:
       sai_do_um = True
       break
     else:
       # agora verifica se tem uma palavra no início da 'célula'
       if re.match( r'\w', t):
-        linhanova[2] += ' ' + linha[2]
+        linhanova[3] += ' ' + linha[2]
       linha = pat.next()
   writer.writerow(linhanova)
   if sai_do_um:
